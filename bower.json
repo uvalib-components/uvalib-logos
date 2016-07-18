@@ -1,7 +1,7 @@
 {
-  "name": "uva-centered-logo",
-  "description": "UVA centered logo",
-  "main": "uva-centered-logo.html",
+  "name": "uvalib-logos",
+  "description": "UVA Library logos",
+  "main": "uvalib-centered-logo.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0"
   },

@@ -16,10 +16,8 @@ UVA centered logo
   }
   svg {
     @apply(--uvalib-horizontal-logo);
-/*
     min-height: 20px;
     max-width: 475px;
-*/
   }
 
   </style>
@@ -38,7 +36,6 @@ UVA centered logo
    viewBox="0 0 0 0"
    style="enable-background:new 0 0 835.8 59.7;"
    xml:space="preserve"
-   id="svg3426"
    inkscape:version="0.91 r13725"
    sodipodi:docname="uvaliblogo.svg"><metadata
      id="metadata3497"><rdf:RDF><cc:Work
@@ -276,7 +273,10 @@ Polymer({
   is: 'uvalib-logo',
 
   properties: {
-    stacked: Boolean,
+    stacked: {
+      type: Boolean,
+      observer: '_size'
+    },
     value: false
   },
 

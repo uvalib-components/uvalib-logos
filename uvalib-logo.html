@@ -20,7 +20,7 @@ UVA centered logo
       }
     </style>
 
-    <svg id="svgimage" class$="{{_layout(stacked)}}"
+    <svg id="svgimage" class$="{{ _class(stacked,twoColor,reverse,centered) }}"
           xmlns:svg="http://www.w3.org/2000/svg"
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
@@ -30,26 +30,44 @@ UVA centered logo
           xml:space="preserve">
 
       <style type="text/css" id="style3428">
-        #rotunda {
+        .two-color #rotunda, .reverse.two-color #rotunda {
           fill: var(--color-primary-orange);
         }
-        #text {
+        .reverse #rotunda {
           fill: var(--color-white);
         }
-        .stacked #rotunda {
+        .two-color #text {
+          fill: var(--color-primary-blue);
+        }
+        .reverse #text {
+          fill: var(--color-white);
+        }
+        #text {
+          fill: black;
+        }
+        .centered #text {
+          transform: translate(0,66px);
+        }
+        .centered #rotunda {
           transform: translate(120px) scale(1.3);
         }
-        .stacked #university-text {
-          transform: translate(-71px,66px);
+        .stacked #text {
+          transform: translate(132px,0);
         }
-        .stacked #virginia-text {
-          transform: translate(-340px,109px);
+        .stacked #rotunda {
+          transform: translate(0,6px) scale(2.3);
         }
-        .stacked #library-text {
-          transform: translate(-581px,151px);
+        .stacked #university-text, .centered #university-text {
+          transform: translate(-71px,0);
         }
-        .stacked #of-text {
-          transform: translate(-334px,90px);
+        .stacked #virginia-text, .centered #virginia-text {
+          transform: translate(-340px,43px);
+        }
+        .stacked #library-text, .centered #library-text {
+          transform: translate(-581px,85px);
+        }
+        .stacked #of-text, .centered #of-text {
+          transform: translate(-334px,24px);
         }
       </style>
       <g id="rotunda">
@@ -113,9 +131,20 @@ UVA centered logo
       properties: {
         stacked: {
           type: Boolean,
-          observer: '_size'
+          value: false
         },
-        value: false,
+        centered: {
+          type: Boolean,
+          value: false
+        },
+        twoColor: {
+          type: Boolean,
+          value: false
+        },
+        reverse: {
+          type: Boolean,
+          value: false
+        },
         _svgStyle: String
       },
 
@@ -123,14 +152,22 @@ UVA centered logo
         this._size();
       },
 
-      _layout: function(stacked){
-        if(stacked) return "stacked";
+      _class: function(){
+        var cls = "";
+        if (this.stacked) cls = "stacked ";
+        if (this.twoColor) cls = cls + "two-color ";
+        if (this.reverse) cls = cls + "reverse ";
+        if (this.centered) cls = cls + "centered";
+        return cls;
       },
 
       _size: function(){
         if (this.stacked) {
-          this._svgStyle = "enable-background:new 0 0 400 400;";
-          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 400 400");
+          this._svgStyle = "enable-background:new 0 0 450 150;";
+          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 450 150");
+        } else if (this.centered) {
+          this._svgStyle = "enable-background:new 0 0 400 205;";
+          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 400 205");
         } else {
           this._svgStyle = "enable-background:new 0 0 835.8 59.7;";
           Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 835.8 59.7");

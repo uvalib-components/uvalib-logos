@@ -13,6 +13,7 @@ UVA centered logo
     <style>
       :host {
         display: block;
+        color: black;
       }
       svg {
         min-height: 20px;
@@ -30,19 +31,22 @@ UVA centered logo
 
       <style type="text/css" id="style3428">
         .two-color #rotunda, .reverse.two-color #rotunda {
-          fill: var(--color-primary-orange);
+          fill: var(--uvalib-logo-color, --color-primary-orange);
         }
         .reverse #rotunda {
-          fill: var(--color-white);
+          fill: var(--uvalib-logo-color, --color-white);
         }
         .two-color #text {
-          fill: var(--color-primary-blue);
+          fill: var(--uvalib-logo-color, --color-primary-blue);
         }
         .reverse #text {
-          fill: var(--color-white);
+          fill: var(--uvalib-logo-color, --color-white);
+        }
+        #rotunda {
+          fill: currentColor;
         }
         #text {
-          fill: black;
+          fill: currentColor;
         }
         .centered #text {
           transform: translate(0,66px);

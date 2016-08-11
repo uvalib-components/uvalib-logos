@@ -27,8 +27,14 @@
       <h3>Text Only Logo Demo</h3>
       <demo-snippet>
         <template>
+          <style is="custom-style">
+            .custom {
+             color: red;
+            }
+          </style>
           <uvalib-logo stacked two-color></uvalib-logo>
           <uvalib-logo stacked></uvalib-logo>
+          <uvalib-logo stacked class="custom"></uvalib-logo>
         </template>
       </demo-snippet>
       <demo-snippet class="blue reverse">

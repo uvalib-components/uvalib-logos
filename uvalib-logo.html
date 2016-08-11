@@ -16,9 +16,6 @@ UVA centered logo
       }
       svg {
         min-height: 20px;
-/*
-        max-width: 475px;
-*/
       }
     </style>
 
@@ -63,7 +60,7 @@ UVA centered logo
           transform: translate(-71px,0);
         }
         .stacked #virginia-text, .centered #virginia-text {
-          transform: translate(-340px,43px);
+          transform: translate(-340px,42.8px);
         }
         .stacked #library-text, .centered #library-text {
           transform: translate(-581px,85px);
@@ -165,11 +162,11 @@ UVA centered logo
 
       _size: function(){
         if (this.stacked) {
-          this._svgStyle = "enable-background:new 0 0 450 150;";
-          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 450 150");
+          this._svgStyle = "enable-background:new 0 0 435 140;";
+          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 435 140");
         } else if (this.centered) {
-          this._svgStyle = "enable-background:new 0 0 400 205;";
-          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 400 205");
+          this._svgStyle = "enable-background:new 0 0 301 205;";
+          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 301 205");
         } else {
           this._svgStyle = "enable-background:new 0 0 835.8 59.7;";
           Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 835.8 59.7");

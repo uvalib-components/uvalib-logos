@@ -20,7 +20,7 @@ UVA centered logo
       }
     </style>
 
-    <svg id="svgimage" class$="{{ _class(stacked,twoColor,reverse,centered) }}"
+    <svg id="svgimage" class$="{{ _class(stacked,twoColor,reverse,centered,textOnly) }}"
           xmlns:svg="http://www.w3.org/2000/svg"
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
@@ -30,6 +30,15 @@ UVA centered logo
           xml:space="preserve">
 
       <style type="text/css" id="style3428">
+        .text-only #rotunda {
+          display: none;
+        }
+        .text-only #text {
+          transform: translate(-71px,0) !important;
+        }
+        .text-only.stacked #text {
+          transform: translate(0,0) !important;
+        }
         .two-color #rotunda, .reverse.two-color #rotunda {
           fill: var(--uvalib-logo-color, --color-primary-orange);
         }
@@ -148,7 +157,11 @@ UVA centered logo
           type: Boolean,
           value: false
         },
-        _svgStyle: String
+        _svgStyle: String,
+        textOnly: {
+          type: Boolean,
+          value: false
+        }
       },
 
       ready: function(){
@@ -161,19 +174,30 @@ UVA centered logo
         if (this.twoColor) cls = cls + "two-color ";
         if (this.reverse) cls = cls + "reverse ";
         if (this.centered) cls = cls + "centered";
+        if (this.textOnly) cls = cls + "text-only";
         return cls;
       },
 
       _size: function(){
-        if (this.stacked) {
-          this._svgStyle = "enable-background:new 0 0 435 140;";
-          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 435 140");
-        } else if (this.centered) {
-          this._svgStyle = "enable-background:new 0 0 301 205;";
-          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 301 205");
+        if (this.textOnly) {
+          if (this.stacked) {
+            this._svgStyle = "enable-background:new 0 0 435 140;";
+            Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 302 139");
+          } else {
+            this._svgStyle = "enable-background:new 0 0 835.8 59.7;";
+            Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 766 59.7");
+          }
         } else {
-          this._svgStyle = "enable-background:new 0 0 835.8 59.7;";
-          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 835.8 59.7");
+          if (this.stacked) {
+            this._svgStyle = "enable-background:new 0 0 435 140;";
+            Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 435 140");
+          } else if (this.centered) {
+            this._svgStyle = "enable-background:new 0 0 301 205;";
+            Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 301 205");
+          } else {
+            this._svgStyle = "enable-background:new 0 0 835.8 59.7;";
+            Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 835.8 59.7");
+          }
         }
       }
 

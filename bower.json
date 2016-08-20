@@ -3,8 +3,12 @@
   "description": "UVA Library logos",
   "main": "uvalib-logo.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0",
-    "uvalib-theme": "uvalib-components/uvalib-theme"
+    "polymer": "polymer/polymer#^1.6.1",
+    "uvalib-theme": "uvalib-components/uvalib-theme#master",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.22",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.1.7",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5",
+    "paper-toggle-button": "PolymerElements/paper-toggle-button#^1.2.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

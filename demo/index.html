@@ -8,6 +8,7 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../paper-toggle-button/paper-toggle-button.html">
 
     <link rel="import" href="../../uvalib-theme/uvalib-theme.html">
     <link rel="import" href="../uvalib-logo.html">
@@ -109,6 +110,23 @@
           <uvalib-logo centered reverse></uvalib-logo>
         </template>
       </demo-snippet>
+
+      <h3>Dynamic binding to Logo Demo</h3>
+      <demo-snippet>
+        <template is="dom-bind" class="reverse">
+          <paper-toggle-button checked="{{centered}}">Centered</paper-toggle-button>
+          <paper-toggle-button checked="{{twocolor}}">Two Color</paper-toggle-button>
+          <paper-toggle-button checked="{{reverse}}">Reverse</paper-toggle-button>
+          <paper-toggle-button checked="{{stacked}}">Stacked</paper-toggle-button>
+          <paper-toggle-button checked="{{textonly}}">Text Only</paper-toggle-button>
+          <uvalib-logo centered$="{{centered}}"
+                       two-color$="{{twocolor}}"
+                       reverse$="{{reverse}}"
+                       stacked$="{{stacked}}"
+                       text-only$="{{textonly}}"></uvalib-logo>
+        </template>
+      </demo-snippet>
+
     </div>
 
   </body>

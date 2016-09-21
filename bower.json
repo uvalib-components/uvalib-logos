@@ -5,13 +5,16 @@
   "dependencies": {
     "polymer": "polymer/polymer#^1.6.1",
     "uvalib-theme": "uvalib-components/uvalib-theme#master",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.22",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.1.7",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5",
     "paper-toggle-button": "PolymerElements/paper-toggle-button#^1.2.0"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.1.7",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5",
-    "web-component-tester": "^4.3.3",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.22",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
     "paper-toggle-button": "PolymerElements/paper-toggle-button#^1.2.0"
   }
 }

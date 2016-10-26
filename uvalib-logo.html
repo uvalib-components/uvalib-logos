@@ -1,5 +1,4 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../uvalib-theme/uvalib-theme.html">
 
 <!--
 `uvalib-logo`
@@ -10,7 +9,7 @@ UVA Library logo
 
 <dom-module id="uvalib-logo">
   <template>
-    <style>
+    <style is="custom-style">
       :host {
         display: block;
         color: black;
@@ -18,6 +17,61 @@ UVA Library logo
       svg {
         min-height: 20px;
       }
+
+      .text-only #rotunda {
+        display: none;
+      }
+
+      .text-only #text {
+        transform: translate(-71px,0) !important;
+      }
+      .text-only.stacked #text {
+        transform: translate(0,0) !important;
+      }
+      .two-color #rotunda, .reverse.two-color #rotunda {
+        fill: var(--uvalib-logo-color, --color-primary-orange);
+      }
+      .reverse #rotunda {
+        fill: var(--uvalib-logo-color, --color-white);
+      }
+      .two-color #text {
+        fill: var(--uvalib-logo-color, --color-primary-blue);
+      }
+      .reverse #text {
+        fill: var(--uvalib-logo-color, --color-white);
+      }
+      #rotunda {
+        fill: currentColor;
+      }
+      #text {
+        fill: currentColor;
+      }
+      .centered #text {
+        transform: translate(0,66px);
+      }
+      .centered #rotunda {
+        transform: translate(120px) scale(1.3);
+      }
+      .stacked #text {
+        transform: translate(132px,0);
+      }
+
+      .stacked #rotunda {
+        transform: translate(0,6px) scale(2.3);
+      }
+      .stacked #university-text, .centered #university-text {
+        transform: translate(-71px,0);
+      }
+      .stacked #virginia-text, .centered #virginia-text {
+        transform: translate(-340px,42.8px);
+      }
+      .stacked #library-text, .centered #library-text {
+        transform: translate(-581px,85px);
+      }
+      .stacked #of-text, .centered #of-text {
+        transform: translate(-334px,24px);
+      }
+
     </style>
 
     <svg id="svgimage" class$="{{ _class(stacked,twoColor,reverse,centered,textOnly) }}"
@@ -29,62 +83,6 @@ UVA Library logo
           style$="{{_svgStyle}}"
           xml:space="preserve">
 
-      <style type="text/css" id="style3428">
-        .text-only #rotunda {
-          display: none;
-        }
-
-        .text-only #text {
-          transform: translate(-71px,0) !important;
-        }
-        .text-only.stacked #text {
-          transform: translate(0,0) !important;
-        }
-        .two-color #rotunda, .reverse.two-color #rotunda {
-          fill: var(--uvalib-logo-color, --color-primary-orange);
-        }
-        .reverse #rotunda {
-          fill: var(--uvalib-logo-color, --color-white);
-        }
-        .two-color #text {
-          fill: var(--uvalib-logo-color, --color-primary-blue);
-        }
-        .reverse #text {
-          fill: var(--uvalib-logo-color, --color-white);
-        }
-        #rotunda {
-          fill: currentColor;
-        }
-        #text {
-          fill: currentColor;
-        }
-        .centered #text {
-          transform: translate(0,66px);
-        }
-        .centered #rotunda {
-          transform: translate(120px) scale(1.3);
-        }
-        .stacked #text {
-          transform: translate(132px,0);
-        }
-
-        .stacked #rotunda {
-          transform: translate(0,6px) scale(2.3);
-        }
-        .stacked #university-text, .centered #university-text {
-          transform: translate(-71px,0);
-        }
-        .stacked #virginia-text, .centered #virginia-text {
-          transform: translate(-340px,42.8px);
-        }
-        .stacked #library-text, .centered #library-text {
-          transform: translate(-581px,85px);
-        }
-        .stacked #of-text, .centered #of-text {
-          transform: translate(-334px,24px);
-        }
-
-      </style>
       <g id="rotunda" transform$="{{_rotundaTransform}}">
         <rect x="37.1" y="25.2" width="4.6" height="22" />
         <rect x="12.1" y="25.2" width="4.5" height="22" />

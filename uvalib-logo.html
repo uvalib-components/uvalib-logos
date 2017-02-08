@@ -18,6 +18,10 @@ UVA Library logo
         min-height: 20px;
       }
 
+      .rotunda-only #text {
+        display: none;
+      }
+
       .text-only #rotunda {
         display: none;
       }
@@ -74,7 +78,7 @@ UVA Library logo
 
     </style>
 
-    <svg id="svgimage" class$="{{ _class(stacked,twoColor,reverse,centered,textOnly) }}"
+    <svg id="svgimage" class$="{{ _class(stacked,twoColor,reverse,centered,textOnly,rotundaOnly) }}"
           xmlns:svg="http://www.w3.org/2000/svg"
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
@@ -163,6 +167,14 @@ UVA Library logo
           type: Boolean,
           value: false
         },
+        rotundaOnly: {
+          type: Boolean,
+          value: false
+        },
+        shortForm: {
+          type: Boolean,
+          value: false
+        },
 
         _textTransform: String,
         _rotundaTransform: String,
@@ -173,8 +185,8 @@ UVA Library logo
       },
 
       observers: [
-        '_size(stacked, centered, textOnly)',
-        '_transforms(stacked, centered, textOnly)'
+        '_size(stacked, centered, textOnly, rotundaOnly)',
+        '_transforms(stacked, centered, textOnly, rotundaOnly)'
       ],
 
       ready: function(){
@@ -186,8 +198,9 @@ UVA Library logo
         if (this.stacked) cls = "stacked ";
         if (this.twoColor) cls = cls + "two-color ";
         if (this.reverse) cls = cls + "reverse ";
-        if (this.centered) cls = cls + "centered";
-        if (this.textOnly) cls = cls + "text-only";
+        if (this.centered) cls = cls + "centered ";
+        if (this.textOnly) cls = cls + "text-only ";
+        if (this.rotundaOnly) cls = cls + "rotunda-only ";
         return cls;
       },
 
@@ -226,7 +239,10 @@ UVA Library logo
 
 
       _size: function(){
-        if (this.textOnly) {
+        if (this.rotundaOnly) {
+          this._svgStyle = "enable-background:new 0 0 835.8 59.7;";
+          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 53.6 54.7");
+        } else if (this.textOnly) {
           if (this.stacked) {
             this._svgStyle = "enable-background:new 0 0 435 140;";
             Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 302 139");

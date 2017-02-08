@@ -22,6 +22,14 @@ UVA Library logo
         display: none;
       }
 
+      .short-form #university-text, .short-form #of-text, .short-form #virginia-text {
+        display: none;
+      }
+
+      .short-form #library-text {
+        transform: translate(-571px,0);
+      }
+
       .text-only #rotunda {
         display: none;
       }
@@ -78,7 +86,7 @@ UVA Library logo
 
     </style>
 
-    <svg id="svgimage" class$="{{ _class(stacked,twoColor,reverse,centered,textOnly,rotundaOnly) }}"
+    <svg id="svgimage" class$="{{ _class(stacked,twoColor,reverse,centered,textOnly,rotundaOnly,shortForm) }}"
           xmlns:svg="http://www.w3.org/2000/svg"
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
@@ -185,8 +193,8 @@ UVA Library logo
       },
 
       observers: [
-        '_size(stacked, centered, textOnly, rotundaOnly)',
-        '_transforms(stacked, centered, textOnly, rotundaOnly)'
+        '_size(stacked, centered, textOnly, rotundaOnly, shortForm)',
+        '_transforms(stacked, centered, textOnly, rotundaOnly, shortForm)'
       ],
 
       ready: function(){
@@ -201,6 +209,7 @@ UVA Library logo
         if (this.centered) cls = cls + "centered ";
         if (this.textOnly) cls = cls + "text-only ";
         if (this.rotundaOnly) cls = cls + "rotunda-only ";
+        if (this.shortForm) cls = cls + "short-form ";
         return cls;
       },
 
@@ -240,8 +249,11 @@ UVA Library logo
 
       _size: function(){
         if (this.rotundaOnly) {
-          this._svgStyle = "enable-background:new 0 0 835.8 59.7;";
+          this._svgStyle = "enable-background:new 0 0 53.6 54.7;";
           Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 53.6 54.7");
+        } else if (this.shortForm) {
+          this._svgStyle = "enable-background:new 0 0 265 55;";
+          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 265 55");
         } else if (this.textOnly) {
           if (this.stacked) {
             this._svgStyle = "enable-background:new 0 0 435 140;";

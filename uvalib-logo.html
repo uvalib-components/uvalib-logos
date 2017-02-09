@@ -97,7 +97,7 @@ UVA Library logo
           role="img" aria-labelledby="title desc">
 
       <title id="title">University of Virginia Library Logo</title>
-      <desc id="desc">The University of Virginia Library Logo</desc>
+      <desc id="desc">{{_logoDesc(stacked,centered,textOnly,rotundaOnly,shortForm)}}</desc>
 
       <g id="rotunda" transform$="{{_rotundaTransform}}">
         <rect x="37.1" y="25.2" width="4.6" height="22" />
@@ -203,6 +203,15 @@ UVA Library logo
 
       ready: function(){
         this._size();
+      },
+
+      _logoDesc: function(){
+        if (this.stacked) return "Stacked version of the University of Virginia Library Logo";
+        else if (this.centered) return "Centered version of the University of Virginia Library Logo";
+        else if (this.textOnly) return "Text only version of the University of Virginia Library Logo";
+        else if (this.rotundaOnly) return "Rotunda graphic only version of the University of Virginia Library Logo";
+        else if (this.shortForm) return "Short form of the University of Virginia Library Logo that simply includes the Rotunda graphic and the Library text"
+        else return "Horizontal version of the University of Virginia Library Logo";
       },
 
       _class: function(){

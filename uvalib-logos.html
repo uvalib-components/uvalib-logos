@@ -10,9 +10,11 @@
         padding: 10px 10px 10px 10px;
         color: black;
       }
+      /*
       :host([variation~='centered']) {
         min-height: 50px;
       }
+      */
       svg {
         height: 100%;
         min-height: 20px;
@@ -85,7 +87,7 @@
       }
     </style>
 
-    <svg id="svgimage" class$="{{ _class(stacked,twoColor,reverse,_centered,textOnly,rotundaOnly,shortForm) }}"
+    <svg id="svgimage" class$="{{ _class(stacked,twoColor,reverse,centered,textOnly,rotundaOnly,shortForm) }}"
               xmlns:svg="http://www.w3.org/2000/svg"
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
@@ -96,7 +98,7 @@
               role="img" aria-labelledby="title desc">
 
           <title id="title">University of Virginia Library Logo</title>
-          <desc id="desc">{{_logoDesc(stacked,_centered,textOnly,rotundaOnly,shortForm)}}</desc>
+          <desc id="desc">{{_logoDesc(stacked,centered,textOnly,rotundaOnly,shortForm)}}</desc>
 
           <g id="rotunda" transform$="{{_rotundaTransform}}">
             <rect x="37.1" y="25.2" width="4.6" height="22" />
@@ -172,9 +174,10 @@
           /**
            * Internally used to track if `variation` value is 'centered'
            */
-          _centered: {
+          centered: {
             type: Boolean,
-            computed: "_isCentered(variation)"
+            value: false
+//            computed: "_isCentered(variation)"
           },
           _svgStyle: {
             type: String
@@ -203,11 +206,11 @@
           /**
            * There are three variations of the UVA logo that serve specific purposes: primary, centered and horizontal.
            */
-          variation: {
-            type: String,
-            value: "horizontal",
-            reflectToAttribute: true
-          },
+//          variation: {
+//            type: String,
+//            value: "horizontal",
+//            reflectToAttribute: true
+//          },
           /**
            * Use the reverse logo for applications on color or photographic backgrounds. Use the two-color reverse logo on solid blue backgrounds only. Always ensure that the background you choose provides sufficient contrast for the logo.
            */
@@ -238,18 +241,18 @@
 
       static get observers() {
         return [
-          '_size(stacked, _centered, textOnly, rotundaOnly, shortForm)',
-          '_transforms(stacked, _centered, textOnly, rotundaOnly, shortForm)'
+          '_size(stacked, centered, textOnly, rotundaOnly, shortForm)',
+          '_transforms(stacked, centered, textOnly, rotundaOnly, shortForm)'
         ]
       }
 
-      _isCentered(variation){
-        return (variation==="centered");
-      }
+//      _isCentered(variation){
+//        return (variation==="centered");
+//      }
 
       _logoDesc(){
         if (this.stacked) return "Stacked version of the University of Virginia Library Logo";
-        else if (this._centered) return "Centered version of the University of Virginia Library Logo";
+        else if (this.centered) return "Centered version of the University of Virginia Library Logo";
         else if (this.textOnly) return "Text only version of the University of Virginia Library Logo";
         else if (this.rotundaOnly) return "Rotunda graphic only version of the University of Virginia Library Logo";
         else if (this.shortForm) return "Short form of the University of Virginia Library Logo that simply includes the Rotunda graphic and the Library text"
@@ -261,7 +264,7 @@
         if (this.stacked) cls = "stacked ";
         if (this.twoColor) cls = cls + "two-color ";
         if (this.reverse) cls = cls + "reverse ";
-        if (this._centered) cls = cls + "centered ";
+        if (this.centered) cls = cls + "centered ";
         if (this.textOnly) cls = cls + "text-only ";
         if (this.rotundaOnly) cls = cls + "rotunda-only ";
         if (this.shortForm) cls = cls + "short-form ";
@@ -280,7 +283,7 @@
             this._textTransform="translate(132,0)";
             this._rotundaTransform="translate(0,6) scale(2.3)";
           }
-        } else if (this._centered) {
+        } else if (this.centered) {
           this._oTextTransform="translate(-334,24)";
           this._lTextTransform="translate(-581,85)";
           this._vTextTransform="translate(-340,42.8)";

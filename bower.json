@@ -4,6 +4,6 @@
   "description": "UVA Library Web Logo Variations",
   "main": "uvalib-logos.html",
   "dependencies": {
-    "uvalib-elements": "uvalib-components/uvalib-elements#2.0"
+    "uvalib-elements": "uvalib-components/uvalib-elements#master"
   }
 }

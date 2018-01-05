@@ -11,10 +11,16 @@
         color: var(--uvalib-black, black);
       }
 
+      :host([stacked]) { min-height: 60px; }
+      :host([centered]) { min-height: 75px; }
+
+
       svg {
         height: 100%;
         min-height: 20px;
       }
+      svg.stacked { min-height: 60px; }
+      svg.centered { min-height: 75px; }
 
       .rotunda-only #text {
         display: none;

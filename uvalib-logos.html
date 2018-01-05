@@ -8,13 +8,9 @@
         display: inline-block;
         min-height: 22px;
         padding: 10px 10px 10px 10px;
-        color: black;
+        color: var(--uvalib-black, black);
       }
-      /*
-      :host([variation~='centered']) {
-        min-height: 50px;
-      }
-      */
+
       svg {
         height: 100%;
         min-height: 20px;
@@ -177,7 +173,6 @@
           centered: {
             type: Boolean,
             value: false
-//            computed: "_isCentered(variation)"
           },
           _svgStyle: {
             type: String
@@ -203,14 +198,7 @@
             type: Boolean,
             value: false
           },
-          /**
-           * There are three variations of the UVA logo that serve specific purposes: primary, centered and horizontal.
-           */
-//          variation: {
-//            type: String,
-//            value: "horizontal",
-//            reflectToAttribute: true
-//          },
+
           /**
            * Use the reverse logo for applications on color or photographic backgrounds. Use the two-color reverse logo on solid blue backgrounds only. Always ensure that the background you choose provides sufficient contrast for the logo.
            */
@@ -245,10 +233,6 @@
           '_transforms(stacked, centered, textOnly, rotundaOnly, shortForm)'
         ]
       }
-
-//      _isCentered(variation){
-//        return (variation==="centered");
-//      }
 
       _logoDesc(){
         if (this.stacked) return "Stacked version of the University of Virginia Library Logo";

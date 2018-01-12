@@ -21,30 +21,24 @@
 
     <test-fixture id="ChangedPropertyTestFixture">
       <template>
-        <uvalib-logos prop1="new-prop1"></uvalib-logos>
+        <uvalib-logos stacked></uvalib-logos>
       </template>
     </test-fixture>
 
     <script>
-      suite('uvalib-logos', () => {
-
-        test('instantiating the element with default properties works', () => {
-          const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'uvalib-logos');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello uvalib-logos!');
+      suite('uvalib-logos', function() {
+        test('instantiating the element works', function() {
+          var element = fixture('BasicTestFixture');
+          assert.equal(element.is, 'uvalib-logos');
         });
 
-        test('setting a property on the element works', () => {
-          // Create a test fixture
-          const element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+        test('testing property changed', function() {
+          var element = fixture('ChangedPropertyTestFixture');
+          assert.equal(element.stacked, true);
         });
 
+        a11ySuite('BasicTestFixture');
+        a11ySuite('ChangedPropertyTestFixture');
       });
     </script>
 

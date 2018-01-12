@@ -29,7 +29,7 @@
       suite('uvalib-logos', function() {
         test('instantiating the element works', function() {
           var element = fixture('BasicTestFixture');
-          assert.equal(element.is, 'uvalib-logos');
+          assert.equal(element.constructor.is, 'uvalib-logos');
         });
 
         test('testing property changed', function() {
@@ -37,8 +37,8 @@
           assert.equal(element.stacked, true);
         });
 
-        a11ySuite('BasicTestFixture');
-        a11ySuite('ChangedPropertyTestFixture');
+        a11ySuite('BasicTestFixture', ['badAriaAttributeValue']);
+        a11ySuite('ChangedPropertyTestFixture', ['badAriaAttributeValue']);
       });
     </script>
 

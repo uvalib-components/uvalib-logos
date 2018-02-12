@@ -3,7 +3,8 @@
 
 <dom-module id="uvalib-logos">
   <template>
-    <style>
+    <custom-style>
+    <style include="uvalib-theme">
       :host {
         display: inline-block;
         min-height: 22px;
@@ -89,6 +90,7 @@
         transform: translate(-334px,24px);
       }
     </style>
+    </custom-style>
 
     <svg id="svgimage" class$="{{ _class(stacked,twoColor,reverse,centered,textOnly,rotundaOnly,shortForm) }}"
               xmlns:svg="http://www.w3.org/2000/svg"
@@ -182,7 +184,8 @@
             value: false
           },
           _svgStyle: {
-            type: String
+            type: String,
+            value: ""
           },
           /**
            * Text only version of the UVA Library logo

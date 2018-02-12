@@ -1,0 +1,21 @@
+{
+  "name": "uvalib-header",
+  "description": "Header element for the UVA Library web apps",
+  "main": "uvalib-header.html",
+  "dependencies": {
+    "uvalib-elements": "uvalib-components/uvalib-elements#master"
+  },
+  "resolutions": {
+    "lodash": "^4.17.4"
+  },
+  "homepage": "https://github.com/uvalib-components/uvalib-header",
+  "_release": "0e0924e9ac",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "0e0924e9acffef42121d971790e2ecd2e7afb6e1"
+  },
+  "_source": "https://github.com/uvalib-components/uvalib-header.git",
+  "_target": "master",
+  "_originalSource": "uvalib-components/uvalib-header"
+}

@@ -1,0 +1,44 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+<dom-module id="uvalib-page-style">
+  <template>
+    <custom-style>
+      <style include="iron-flex iron-flex-reverse iron-flex-alignment iron-flex-factors iron-positioning">
+        .shady {
+          display: block;
+          margin: 0 -1000px 0 -1000px;
+          padding: 0 1000px 0 1000px;
+          @apply --layout-vertical;
+          background-color: var(--color-light-gray);
+        }
+
+        iron-image.round {
+          border-radius: 50%;
+          /*border: 2px solid red;*/
+          width: 300px;
+          height:300px;
+          --iron-image-width: 300px;
+        }
+
+        .bigFirstLetter:first-letter {
+          float: left;
+          font-family: var(--font-secondary);
+          font-size: 60px;
+          line-height: 60px;
+          padding-right: 8px;
+          color: var(--color-primary-orange);
+        }
+
+        #profile {
+          margin: 0 10px 0 10px;
+          min-width: 300px;
+        }
+
+        iron-image {min-width: 300px;}
+
+        
+      </style>
+    </custom-style>
+  </template>
+</dom-module>

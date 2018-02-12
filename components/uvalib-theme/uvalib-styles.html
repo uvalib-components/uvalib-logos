@@ -1,0 +1,358 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="uvalib-theme">
+  <template>
+    <style>
+
+      :host, body {
+        @apply --font-body1;
+        font-style: normal;
+        font-family: var(--font-primary);
+      }
+
+      h1 {
+        @apply --font-display3;
+      }
+      h2 {
+        @apply --font-display2;
+      }
+      h3 {
+        @apply --font-display1;
+      }
+      h4 {
+        @apply --font-headline;
+      }
+      h5 {
+        @apply --font-body2;
+      }
+      h6 {
+        @apply --font-title;
+      }
+
+      blockquote {
+        margin: 20px 0;
+        padding-left: 1.5rem;
+        font-size: 30px;
+        line-height: 36px;
+        border-left: 4px solid var(--color-accent-color);
+        text-transform: none;
+      }
+
+      ul, ol {
+        font-family: var(--font-primary);
+        font-weight: var(--font-weight-regular);
+        line-height: 30px;
+        margin: 15px 0px;
+        padding-left: 40px;
+        color: var(--color-text-gray);
+      }
+
+      a, uvalib-liame {
+    	  color: var(--color-text-blue);
+    	  text-decoration: none;
+
+        // Gets rid of tap active state
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .uva-padding-left {
+        padding-left: 1em;
+      }
+      .uva-padding-right {
+        padding-right: 1em;
+      }
+
+
+/*Accessibility*/
+      a:focus {
+        outline: var(--color-accessibility-outline-light-bg) dotted 3px;
+        padding: .15em;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      nav a:focus {
+        outline: var(--color-accessibility-outline-dark-bg) dotted 3px;
+        padding: .15em;
+      }
+
+      #top #logo a:focus {
+        outline: var(--color-accessibility-outline-dark-bg) dotted 3px;
+        padding: .15em;
+      }
+
+      #top #logo a:hover {
+        border-bottom: 1px solid var(--color-accessibility-outline-dark-bg);
+        padding-bottom: .1em;
+      }
+/*END*/
+
+/* Card styles in Pages */
+      uvalib-card, paper-card {
+        margin: 10px;
+        max-width: 500px;
+        min-width: 290px;
+      }
+      :host(uvalib-card) h3 {
+        @apply --font-title;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding-left: .75em;
+      }
+      :host(uvalib-card) h3:first-child {
+        margin-top: .5em;
+      }
+      :host(uvalib-card) ul {
+        list-style: none;
+        padding-left: 1em;
+        margin-top: .25em;
+        margin-bottom: 1.5em;
+      }
+      nav ul {
+        list-style: none;
+        padding-left: 1em;
+        margin-top: .25em;
+      }
+
+      paper-card.wide {
+        margin: 10px 10px 10px 10px;
+        max-width: calc(100% - 20px);
+        width: 100%;
+      }
+
+      paper-card .card-aux-container {
+        @apply --layout-horizontal;
+        @apply --layout-wrap;
+      }
+      paper-card .card-aux-container > div {
+        @apply --layout-flex;
+      }
+      paper-card .text-section, paper-card .card-nav, paper-card .card-index {
+        min-width: 200px;
+      }
+      paper-card .text-section {}
+      paper-card .card-nav {}
+      paper-card .card-index {
+        @apply --layout-horizontal;
+        @apply --layout-wrap;
+      }
+      paper-card .card-index div {
+        min-width: 50px;
+        min-height: 50px;
+        text-align: center;
+        position: relative;
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
+        @apply --layout-center;
+      }
+
+      paper-card .card-content {
+        padding: 0;
+      }
+
+      paper-card .text-section, paper-card .card-nav {
+        padding: 2em;
+      }
+
+      paper-card .text-section {
+        /*color: green;*/
+      }
+
+      paper-card .card-nav, paper-card .card-index {
+        background-color: var(--color-primary-blue);
+        color: var(--color-white);
+      }
+
+      paper-card .card-nav ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: .25em;
+        margin-bottom: 1.5em;
+      }
+
+      paper-card .card-index a {
+        @apply --font-headline;
+      }
+
+      paper-card .card-nav ul li a, paper-card .card-index a {
+        color: var(--color-white);
+      }
+
+      paper-card .card-nav ul li a:focus, paper-card .card-index a:focus {
+        outline: var(--color-accessibility-outline-dark-bg) dotted 3px;
+      }
+
+      paper-card .card-actions a {
+        color: var(--color-primary-orange);
+        font-weight: bold;
+      }
+
+      /*paper-card .card-index div {
+        border-right: 1px solid var(--uvalib-blue-800);
+        border-bottom: 1px solid var(--uvalib-blue-800);
+      }*/
+
+      /*Definition List Styling*/
+      :host(.defined-list) dl {
+        padding: 0 1em;
+      }
+      :host(.defined-list) dt {
+        padding: 0 1em;
+        font-weight: 700;
+        font-size: 1.15em;
+      }
+      :host(.defined-list) dd {
+        padding: 0 1em;
+        margin-left: 0;
+        margin-bottom: 1.5em;
+      }
+      :host(.defined-list) dd, :host(.defined-list) dt {
+        border-left: 2px solid var(--uvalib-grey-500);
+      }
+      :host(.defined-list) dd:first-child {
+        display: none;
+      }
+      /*END*/
+
+      /*Sidebar Blocks*/
+
+      /*Research*/
+      .research-sidebar {
+          border: 1px solid cyan;
+          margin-top: 10em;
+      }
+
+      /* desktop */
+      :host([large-screen]) aside {
+          padding: 30px;
+          background-color: var(--uvalib-grey-200);
+      }
+
+      /* small screen */
+      :host([small-screen]) aside {
+          padding: 0px;
+          background-color: none;
+      }
+
+      :host([small-screen]) .research-sidebar {
+          margin-top: 0px;
+      }
+
+      /*END*/
+
+
+
+/*END*/
+
+
+      /* =WordPress Core
+      -------------------------------------------------------------- */
+      .alignnone {
+          margin: 5px 20px 20px 0;
+      }
+
+      .aligncenter,
+      div.aligncenter {
+          display: block;
+          margin: 5px auto 5px auto;
+      }
+
+      .alignright {
+          float:right;
+          margin: 5px 0 20px 20px;
+      }
+
+      .alignleft {
+          float: left;
+          margin: 5px 20px 20px 0;
+      }
+
+      a img.alignright {
+          float: right;
+          margin: 5px 0 20px 20px;
+      }
+
+      a img.alignnone {
+          margin: 5px 20px 20px 0;
+      }
+
+      a img.alignleft {
+          float: left;
+          margin: 5px 20px 20px 0;
+      }
+
+      a img.aligncenter {
+          display: block;
+          margin-left: auto;
+          margin-right: auto
+      }
+
+      .wp-caption {
+          background: #fff;
+          border: 1px solid #f0f0f0;
+          max-width: 96%; /* Image does not overflow the content area */
+          padding: 5px 3px 10px;
+          text-align: center;
+      }
+
+      .wp-caption.alignnone {
+          margin: 5px 20px 20px 0;
+      }
+
+      .wp-caption.alignleft {
+          margin: 5px 20px 20px 0;
+      }
+
+      .wp-caption.alignright {
+          margin: 5px 0 20px 20px;
+      }
+
+      .wp-caption img {
+          border: 0 none;
+          height: auto;
+          margin: 0;
+          max-width: 98.5%;
+          padding: 0;
+          width: auto;
+      }
+
+      .wp-caption p.wp-caption-text {
+          font-size: 13px;
+          line-height: 17px;
+          margin: 0;
+          padding: 0 4px 5px;
+      }
+
+      /* Text meant only for screen readers. */
+      .screen-reader-text {
+        clip: rect(1px, 1px, 1px, 1px);
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+      }
+
+      .screen-reader-text:focus {
+        background-color: #f1f1f1;
+        border-radius: 3px;
+        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+        clip: auto !important;
+        color: #21759b;
+        display: block;
+        font-size: 14px;
+        font-size: 0.875rem;
+        font-weight: bold;
+        height: auto;
+        left: 5px;
+        line-height: normal;
+        padding: 15px 23px 14px;
+        text-decoration: none;
+        top: 5px;
+        width: auto;
+        z-index: 100000; /* Above WP toolbar. */
+      }
+    </style>
+  </template>
+</dom-module>

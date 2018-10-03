@@ -2,7 +2,7 @@
 <link rel="import" href="../uvalib-theme/uvalib-theme.html">
 
 <dom-module id="uvalib-logos">
-  <template>
+    <template>
     <custom-style>
     <style include="uvalib-theme">
       :host {
@@ -102,7 +102,7 @@
               xml:space="preserve"
               role="img" aria-labelledby="title desc">
 
-          <title id="title">University of Virginia Library Logo</title>
+          <title id="title">University of Virginia Library</title>
           <desc id="desc">{{_logoDesc(stacked,centered,textOnly,rotundaOnly,shortForm)}}</desc>
 
           <g id="rotunda" transform$="{{_rotundaTransform}}">
@@ -157,178 +157,192 @@
 
   </template>
 
-  <script>
-    /**
-     * `uvalib-logos`
-     *
-     * @customElement
-     * @polymer
-     * @demo demo/index.html
-     */
-    class UvalibLogos extends Polymer.Element {
-      static get is() { return 'uvalib-logos'; }
-      static get properties() {
-        return {
-          /**
-           * Stacked version of the UVA Library logo
-           */
-          stacked: {
-            type: Boolean,
-            value: false
-          },
-          /**
-           * Internally used to track if `variation` value is 'centered'
-           */
-          centered: {
-            type: Boolean,
-            value: false
-          },
-          _svgStyle: {
-            type: String,
-            value: ""
-          },
-          /**
-           * Text only version of the UVA Library logo
-           */
-          textOnly: {
-            type: Boolean,
-            value: false
-          },
-          /**
-           * Rotunda only
-           */
-          rotundaOnly: {
-            type: Boolean,
-            value: false
-          },
-          /**
-           * Shortened version of the UVA Library logo
-           */
-          shortForm: {
-            type: Boolean,
-            value: false
-          },
+    <script>
+        /**
+         * `uvalib-logos`
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class UvalibLogos extends Polymer.Element {
+            static get is() {
+                return 'uvalib-logos';
+            }
+            static get properties() {
+                return {
+                    /**
+                     * Stacked version of the UVA Library logo
+                     */
+                    stacked: {
+                        type: Boolean,
+                        value: false
+                    },
+                    /**
+                     * Internally used to track if `variation` value is 'centered'
+                     */
+                    centered: {
+                        type: Boolean,
+                        value: false
+                    },
+                    _svgStyle: {
+                        type: String,
+                        value: ""
+                    },
+                    /**
+                     * Text only version of the UVA Library logo
+                     */
+                    textOnly: {
+                        type: Boolean,
+                        value: false
+                    },
+                    /**
+                     * Rotunda only
+                     */
+                    rotundaOnly: {
+                        type: Boolean,
+                        value: false
+                    },
+                    /**
+                     * Shortened version of the UVA Library logo
+                     */
+                    shortForm: {
+                        type: Boolean,
+                        value: false
+                    },
 
-          /**
-           * Use the reverse logo for applications on color or photographic backgrounds. Use the two-color reverse logo on solid blue backgrounds only. Always ensure that the background you choose provides sufficient contrast for the logo.
-           */
-          reverse: {
-            type: Boolean,
-            value: false
-          },
-          /**
-           * Two color version of the logo
-           */
-          twoColor: {
-            type: Boolean,
-            value: false
-          },
-          _textTransform: {type: String},
-          _rotundaTransform: {type: String},
-          _uTextTransform: {type: String},
-          _vTextTransform: {type: String},
-          _lTextTransform: {type: String},
-          _oTextTransform: {type: String}
-        };
-      }
+                    /**
+                     * Use the reverse logo for applications on color or photographic backgrounds. Use the two-color reverse logo on solid blue backgrounds only. Always ensure that the background you choose provides sufficient contrast for the logo.
+                     */
+                    reverse: {
+                        type: Boolean,
+                        value: false
+                    },
+                    /**
+                     * Two color version of the logo
+                     */
+                    twoColor: {
+                        type: Boolean,
+                        value: false
+                    },
+                    _textTransform: {
+                        type: String
+                    },
+                    _rotundaTransform: {
+                        type: String
+                    },
+                    _uTextTransform: {
+                        type: String
+                    },
+                    _vTextTransform: {
+                        type: String
+                    },
+                    _lTextTransform: {
+                        type: String
+                    },
+                    _oTextTransform: {
+                        type: String
+                    }
+                };
+            }
 
-      ready() {
-        super.ready();
-        this._size();
-      }
+            ready() {
+                super.ready();
+                this._size();
+            }
 
-      static get observers() {
-        return [
-          '_size(stacked, centered, textOnly, rotundaOnly, shortForm)',
-          '_transforms(stacked, centered, textOnly, rotundaOnly, shortForm)'
-        ]
-      }
+            static get observers() {
+                return [
+                    '_size(stacked, centered, textOnly, rotundaOnly, shortForm)',
+                    '_transforms(stacked, centered, textOnly, rotundaOnly, shortForm)'
+                ]
+            }
 
-      _logoDesc(){
-        if (this.stacked) return "Stacked version of the University of Virginia Library Logo";
-        else if (this.centered) return "Centered version of the University of Virginia Library Logo";
-        else if (this.textOnly) return "Text only version of the University of Virginia Library Logo";
-        else if (this.rotundaOnly) return "Rotunda graphic only version of the University of Virginia Library Logo";
-        else if (this.shortForm) return "Short form of the University of Virginia Library Logo that simply includes the Rotunda graphic and the Library text"
-        else return "Horizontal version of the University of Virginia Library Logo";
-      }
+            _logoDesc() {
+                if (this.stacked) return "Stacked version of the logo";
+                else if (this.centered) return "Centered version of the logo";
+                else if (this.textOnly) return "Text only version of the logo";
+                else if (this.rotundaOnly) return "Rotunda graphic only version of the logo";
+                else if (this.shortForm) return "Short form of the logo that simply includes the Rotunda graphic and the Library text"
+                else return "Horizontal version of the logo";
+            }
 
-      _class(){
-        var cls = "";
-        if (this.stacked) cls = "stacked ";
-        if (this.twoColor) cls = cls + "two-color ";
-        if (this.reverse) cls = cls + "reverse ";
-        if (this.centered) cls = cls + "centered ";
-        if (this.textOnly) cls = cls + "text-only ";
-        if (this.rotundaOnly) cls = cls + "rotunda-only ";
-        if (this.shortForm) cls = cls + "short-form ";
-        return cls;
-      }
+            _class() {
+                var cls = "";
+                if (this.stacked) cls = "stacked ";
+                if (this.twoColor) cls = cls + "two-color ";
+                if (this.reverse) cls = cls + "reverse ";
+                if (this.centered) cls = cls + "centered ";
+                if (this.textOnly) cls = cls + "text-only ";
+                if (this.rotundaOnly) cls = cls + "rotunda-only ";
+                if (this.shortForm) cls = cls + "short-form ";
+                return cls;
+            }
 
-      _transforms(){
-        if (this.stacked) {
-          this._oTextTransform="translate(-334,24)";
-          this._lTextTransform="translate(-581,85)";
-          this._vTextTransform="translate(-340,42.8)";
-          this._uTextTransform="translate(-71,0)";
-          if (this.textOnly) {
-            this._textTransform="translate(0,0)";
-          } else {
-            this._textTransform="translate(132,0)";
-            this._rotundaTransform="translate(0,6) scale(2.3)";
-          }
-        } else if (this.centered) {
-          this._oTextTransform="translate(-334,24)";
-          this._lTextTransform="translate(-581,85)";
-          this._vTextTransform="translate(-340,42.8)";
-          this._uTextTransform="translate(-71,0)";
-          this._textTransform="translate(0,66)";
-          this._rotundaTransform="translate(120) scale(1.3)";
-        } else {
-          this._rotundaTransform="";
-          this._oTextTransform="";
-          this._lTextTransform="";
-          this._vTextTransform="";
-          this._uTextTransform="";
-          if (this.textOnly) {
-            this._textTransform="translate(-71,0)";
-          } else {
-            this._textTransform=""
-          }
+            _transforms() {
+                if (this.stacked) {
+                    this._oTextTransform = "translate(-334,24)";
+                    this._lTextTransform = "translate(-581,85)";
+                    this._vTextTransform = "translate(-340,42.8)";
+                    this._uTextTransform = "translate(-71,0)";
+                    if (this.textOnly) {
+                        this._textTransform = "translate(0,0)";
+                    } else {
+                        this._textTransform = "translate(132,0)";
+                        this._rotundaTransform = "translate(0,6) scale(2.3)";
+                    }
+                } else if (this.centered) {
+                    this._oTextTransform = "translate(-334,24)";
+                    this._lTextTransform = "translate(-581,85)";
+                    this._vTextTransform = "translate(-340,42.8)";
+                    this._uTextTransform = "translate(-71,0)";
+                    this._textTransform = "translate(0,66)";
+                    this._rotundaTransform = "translate(120) scale(1.3)";
+                } else {
+                    this._rotundaTransform = "";
+                    this._oTextTransform = "";
+                    this._lTextTransform = "";
+                    this._vTextTransform = "";
+                    this._uTextTransform = "";
+                    if (this.textOnly) {
+                        this._textTransform = "translate(-71,0)";
+                    } else {
+                        this._textTransform = ""
+                    }
+                }
+            }
+
+            _size() {
+                if (this.rotundaOnly) {
+                    this._svgStyle = "enable-background:new 0 0 53.6 54.7;";
+                    Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 53.6 54.7");
+                } else if (this.shortForm) {
+                    this._svgStyle = "enable-background:new 0 0 265 55;";
+                    Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 265 55");
+                } else if (this.textOnly) {
+                    if (this.stacked) {
+                        this._svgStyle = "enable-background:new 0 0 435 140;";
+                        Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 302 139");
+                    } else {
+                        this._svgStyle = "enable-background:new 0 0 835.8 59.7;";
+                        Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 766 59.7");
+                    }
+                } else {
+                    if (this.stacked) {
+                        this._svgStyle = "enable-background:new 0 0 435 140;";
+                        Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 435 140");
+                    } else if (this.centered) {
+                        this._svgStyle = "enable-background:new 0 0 301 205;";
+                        Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 301 205");
+                    } else {
+                        this._svgStyle = "enable-background:new 0 0 835.8 59.7;";
+                        Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 835.8 59.7");
+                    }
+                }
+            }
+
         }
-      }
 
-      _size(){
-        if (this.rotundaOnly) {
-          this._svgStyle = "enable-background:new 0 0 53.6 54.7;";
-          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 53.6 54.7");
-        } else if (this.shortForm) {
-          this._svgStyle = "enable-background:new 0 0 265 55;";
-          Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 265 55");
-        } else if (this.textOnly) {
-          if (this.stacked) {
-            this._svgStyle = "enable-background:new 0 0 435 140;";
-            Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 302 139");
-          } else {
-            this._svgStyle = "enable-background:new 0 0 835.8 59.7;";
-            Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 766 59.7");
-          }
-        } else {
-          if (this.stacked) {
-            this._svgStyle = "enable-background:new 0 0 435 140;";
-            Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 435 140");
-          } else if (this.centered) {
-            this._svgStyle = "enable-background:new 0 0 301 205;";
-            Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 301 205");
-          } else {
-            this._svgStyle = "enable-background:new 0 0 835.8 59.7;";
-            Polymer.dom(this.$.svgimage).setAttribute("viewBox", "0 0 835.8 59.7");
-          }
-        }
-      }
-
-    }
-
-    window.customElements.define(UvalibLogos.is, UvalibLogos);
-  </script>
+        window.customElements.define(UvalibLogos.is, UvalibLogos);
+    </script>
 </dom-module>
